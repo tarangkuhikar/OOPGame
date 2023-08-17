@@ -5,6 +5,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IHitable
 {
     [SerializeField]
     protected float health;
+    protected Transform player;
     public float Health
     {
         get => health;
@@ -15,7 +16,10 @@ public abstract class AbstractEnemy : MonoBehaviour, IHitable
             { Destroy(gameObject); }
         }
     }
-
+    protected void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     public void Hit(float Damage)
     {
         health -= Damage;
