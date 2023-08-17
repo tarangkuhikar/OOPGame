@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float lookSensitivity;
     Vector2 lookDirection;
+    [SerializeField]
+    AbstractGun playerGun;
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -20,11 +22,18 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = value.Get<Vector2>();
     }
-
+    public void OnFire()
+    {
+        playerGun.Fire();
+    }
     public void Update()
     {
         characterController.Move(speed * Time.deltaTime * (moveDirection.x * transform.right + moveDirection.y * transform.forward));
         transform.Rotate(lookSensitivity*Time.deltaTime * lookDirection);
+        if (!characterController.isGrounded)
+        {
+            characterController.Move(9.8f * Time.deltaTime * -transform.up);
+        }
     }
     public void OnLook(InputValue value)
     {

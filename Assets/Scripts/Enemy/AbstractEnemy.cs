@@ -22,7 +22,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IHitable
     }
     public void Hit(float Damage)
     {
-        health -= Damage;
+        Health -= Damage;
     }
 
 }
