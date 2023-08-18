@@ -6,6 +6,8 @@ public abstract class AbstractEnemy : MonoBehaviour, IHitable
     [SerializeField]
     protected float health;
     protected Transform player;
+
+    //Encapsulation
     public float Health
     {
         get => health;
