@@ -16,11 +16,11 @@ public abstract class AbstractEnemy : MonoBehaviour, IHitable
             { Destroy(gameObject); }
         }
     }
-    protected void Awake()
+    public virtual void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
-    public void Hit(float Damage)
+    public virtual void Hit(float Damage)
     {
         Health -= Damage;
     }

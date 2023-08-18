@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
     }
+
+    //Abstraction
     public void OnFire(float force, Vector3 direction)
     {
         rigidBody.AddForce(force * direction, ForceMode.Impulse);
